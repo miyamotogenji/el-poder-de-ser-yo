@@ -913,24 +913,55 @@
           updateEnabled: true
         };
 
-        try {
-          var res = await fetch("submit-inscripcion.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          var data = {};
-          try { data = await res.json(); } catch (x) {}
-          if (!res.ok) throw new Error(data.error || "fail");
+        var endpoints = ["/api/submit", "submit-inscripcion.php"];
+        var sent = false;
+        for (var i = 0; i < endpoints.length; i++) {
+          try {
+            var res = await fetch(endpoints[i], {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+            if (!res.ok) continue;
+            sent = true;
+            break;
+          } catch (e) {}
+        }
+
+        if (!sent) {
+          try {
+            var mailBody = {
+              _subject: "Inscripción taller: El Poder de Ser Yo",
+              nombre: payload.attributes.NOMBRE_COMPLETO,
+              email: payload.email,
+              whatsapp: payload.attributes.TELEFONO_WHATSAPP,
+              pais: payload.attributes.PAIS,
+              rol: payload.attributes.ROL,
+              cantidad_hijos: payload.attributes.CANTIDAD_HIJOS,
+              edad_hijos: payload.attributes.EDAD_HIJOS,
+              interes: payload.attributes.INTERES_TALLER,
+              fuente: payload.attributes.COMO_ENTERASTE,
+              recibir_info: payload.attributes.RECIBIR_INFO,
+              pregunta: payload.attributes.PREGUNTA_ABIERTA
+            };
+            var fs = await fetch("https://formsubmit.co/ajax/todosabordocr@gmail.com", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify(mailBody)
+            });
+            if (fs.ok) sent = true;
+          } catch (e2) {}
+        }
+
+        if (sent) {
           statusEl.className = "form-status ok";
           statusEl.textContent = "¡Listo! Recibimos tu inscripción. Te contactaremos al correo / WhatsApp.";
           form.reset();
-        } catch (err) {
+        } else {
           statusEl.className = "form-status err";
-          statusEl.textContent = "No se pudo enviar. Subí la carpeta al hosting PHP del sitio, o escribinos a todosabordocr@gmail.com.";
-        } finally {
-          btn.disabled = false;
+          statusEl.textContent = "No se pudo enviar. Escribinos a todosabordocr@gmail.com con tus datos.";
         }
+        btn.disabled = false;
       });
     })();
   </script>
