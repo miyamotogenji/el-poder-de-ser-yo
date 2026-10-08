@@ -35,7 +35,10 @@
     }
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+    .wrap { width: min(100% - 2.75rem, var(--max)); margin-inline: auto; }
+    @media (min-width: 760px) {
+      .wrap { width: min(100% - 2rem, var(--max)); }
+    }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
@@ -112,20 +115,45 @@
     }
 
     .band-zoom {
-      background: var(--blush) url("elementos/El%20poder%20de%20ser%20yo-04.png") center/cover no-repeat;
+      background: var(--blush);
       color: #fff;
       text-align: center;
-      padding: 3.25rem 1rem 3.5rem;
+      padding: 2.75rem 1rem 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .band-zoom h2 {
-      margin: 0 0 1rem;
+    .zoom-circle {
+      width: min(460px, 86vw);
+      aspect-ratio: 1.12 / 1;
+      border-radius: 50%;
+      background: var(--gold) url("elementos/El%20poder%20de%20ser%20yo-04.png") center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(1.6rem, 5vw, 2.6rem) clamp(1.4rem, 5vw, 2.4rem);
+      box-shadow: 0 10px 28px rgba(46,77,72,.12);
+    }
+    .zoom-circle h2 {
+      margin: 0 0 .75rem;
       font-family: var(--font-display);
-      font-size: clamp(1.55rem, 3.5vw, 2.25rem);
+      font-size: clamp(1.35rem, 3.4vw, 2rem);
       font-weight: 800;
+      line-height: 1.15;
+      max-width: 16ch;
     }
-    .band-zoom p { margin: 0 auto 1.15rem; max-width: 34rem; opacity: .97; }
+    .zoom-circle p {
+      margin: 0 0 1rem;
+      max-width: 22rem;
+      opacity: .97;
+      font-size: clamp(.92rem, 2.2vw, 1.05rem);
+      line-height: 1.4;
+    }
     .play-ico {
-      width: 72px; margin: 0 auto;
+      width: clamp(48px, 12vw, 68px);
+      margin: 0 auto;
       filter: brightness(0) invert(1);
     }
 
@@ -184,7 +212,29 @@
     .cta-dark { background: var(--deep); color: #fff; }
     .cta-coral { background: var(--coral); color: #fff; }
 
-    .illu { width: min(100%, 360px); margin-inline: auto; animation: floaty 6s ease-in-out infinite; }
+    .illu {
+      width: min(48%, 170px);
+      margin-inline: auto;
+      animation: floaty 6s ease-in-out infinite;
+    }
+    .illu.illu-family,
+    .illu.illu-puzzle {
+      width: min(48%, 170px);
+    }
+    @media (min-width: 860px) {
+      .illu,
+      .illu.illu-family,
+      .illu.illu-puzzle {
+        width: min(100%, 300px);
+      }
+      .split .illu-family {
+        width: auto;
+        max-width: 280px;
+        max-height: 320px;
+        object-fit: contain;
+        justify-self: center;
+      }
+    }
 
     /* Manifesto */
     .manifesto-band {
@@ -199,54 +249,85 @@
       max-width: 38rem;
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+      font-size: clamp(1.05rem, 2.8vw, 1.65rem);
       letter-spacing: .02em;
     }
     .manifesto-band p {
       margin: 0 auto 1.5rem;
       max-width: 34rem;
-      font-size: 1.05rem;
+      font-size: clamp(.95rem, 2.4vw, 1.05rem);
     }
     .manifesto-band .portrait {
-      width: min(420px, 78vw);
+      width: min(360px, 70vw);
       margin: 0 auto;
+      display: block;
       filter: drop-shadow(0 16px 28px rgba(46,77,72,.28));
     }
 
     /* Modules */
+    .modules-section { padding: 0 0 3.4rem; }
+    .modules-strip {
+      background: var(--deep);
+      color: #fff;
+      padding: .95rem 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .modules-strip h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.2rem, 3vw, 1.85rem);
+      letter-spacing: -.02em;
+      color: #fff;
+    }
     .modules {
       display: grid; gap: 1.15rem;
     }
     @media (min-width: 760px) {
       .modules { grid-template-columns: 1fr 1fr; }
+      .modules-strip {
+        background: transparent;
+        color: var(--deep);
+        padding: 2.5rem 0 .35rem;
+        margin-bottom: .85rem;
+      }
+      .modules-strip h2 { color: var(--deep); }
+      .modules-section { padding: 0 0 3.4rem; }
     }
     .mod {
       position: relative;
-      min-height: 280px;
-      border-radius: 36px;
+      min-height: 300px;
+      border-radius: 28px;
       overflow: hidden;
       color: #fff;
       background-size: cover;
       background-position: center;
-      padding: 1.15rem 1.2rem 1.35rem;
+      padding: 1.35rem 1.35rem 1.5rem;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       text-align: center;
     }
     .mod .tag {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: .82rem;
-      letter-spacing: .06em;
-      margin-bottom: .85rem;
+      font-size: clamp(1rem, 2.6vw, 1.2rem);
+      letter-spacing: .08em;
+      margin-bottom: .7rem;
     }
     .mod h3 {
-      margin: 0 0 .65rem;
+      margin: 0 0 .75rem;
       font-family: var(--font-display);
-      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-size: clamp(1.15rem, 2.5vw, 1.4rem);
       line-height: 1.2;
     }
-    .mod p { margin: 0; font-size: .93rem; opacity: .96; }
+    .mod p {
+      margin: 0;
+      font-size: clamp(1rem, 2.3vw, 1.12rem);
+      line-height: 1.45;
+      opacity: .98;
+    }
     .m1 { background-image: url("elementos/El%20poder%20de%20ser%20yo-10.png"); }
     .m2 { background-image: url("elementos/El%20poder%20de%20ser%20yo-11.png"); }
     .m3 { background-image: url("elementos/El%20poder%20de%20ser%20yo-12.png"); }
@@ -261,44 +342,95 @@
 
     /* Includes */
     .includes {
-      padding: 0 0 3.5rem;
-      background: linear-gradient(180deg, var(--gold) 0 42%, #fff 42% 100%);
+      padding: 2.5rem 0 3rem;
+      background: linear-gradient(180deg, var(--gold) 0 38%, #fff 38% 100%);
       position: relative;
+      overflow: hidden;
     }
     .includes .deco {
       position: absolute;
-      inset: 0 0 58% 0;
-      background: url("elementos/El%20poder%20de%20ser%20yo-15.png") center top / min(900px, 110%) no-repeat;
-      opacity: .55;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: min(680px, 100%);
+      height: 42%;
+      background: url("elementos/El%20poder%20de%20ser%20yo-15.png") center top / contain no-repeat;
+      opacity: .45;
       pointer-events: none;
     }
     .clipboard {
       position: relative;
-      width: min(420px, 92vw);
+      width: min(380px, 88vw);
       margin: 0 auto;
       z-index: 1;
     }
-    .clipboard > img.board { width: 100%; }
+    .includes-title {
+      margin: 0 auto .35rem;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 3.4vw, 1.7rem);
+      font-weight: 800;
+      color: var(--deep);
+      position: relative;
+      z-index: 3;
+      letter-spacing: -.02em;
+    }
+    .clipboard-board {
+      position: relative;
+      margin-top: -.15rem;
+    }
+    .clipboard-board > img.board { width: 100%; display: block; }
     .clipboard-copy {
       position: absolute;
-      left: 12%; right: 12%;
-      top: 14%;
-      bottom: 28%;
-      overflow: auto;
+      left: 14%;
+      right: 14%;
+      top: 18%;
+      bottom: 6%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
       text-align: center;
     }
-    .clipboard-copy h2 {
-      margin: 0 0 .85rem;
-      font-family: var(--font-display);
-      font-size: clamp(1.2rem, 3vw, 1.55rem);
-      color: var(--deep);
+    .includes-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+      width: 100%;
     }
-    .clipboard-copy .bullets { text-align: left; }
+    .includes-list li {
+      margin: 0 0 .55rem;
+      padding: 0;
+      color: var(--deep);
+      font-size: clamp(.88rem, 2.4vw, 1rem);
+      line-height: 1.35;
+      font-weight: 600;
+    }
+    .includes-list li::before { content: none; }
     .boy-wrap {
       position: relative;
-      width: min(340px, 80vw);
-      margin: -1.5rem auto 0;
+      width: min(58%, 180px);
+      margin: .35rem auto 0;
+      flex-shrink: 0;
       z-index: 2;
+    }
+    .boy-wrap img {
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    @media (min-width: 760px) {
+      .clipboard { width: min(440px, 92vw); }
+      .clipboard-copy {
+        left: 13%;
+        right: 13%;
+        top: 17%;
+        bottom: 7%;
+      }
+      .includes-list li { font-size: 1.02rem; margin-bottom: .65rem; }
+      .boy-wrap { width: min(52%, 200px); }
     }
 
     /* Pricing */
@@ -399,30 +531,58 @@
 
     /* Finale */
     .finale {
-      background: var(--coral) url("elementos/El%20poder%20de%20ser%20yo-08.png") center/cover no-repeat;
+      background: var(--coral) url("elementos/El%20poder%20de%20ser%20yo-08.png") center bottom / cover no-repeat;
       color: #fff;
-      padding: 3rem 0 0;
+      padding: 2.5rem 0 0;
       overflow: hidden;
     }
     .finale-grid {
-      display: grid; gap: 1rem; align-items: end;
+      display: grid;
+      gap: .75rem;
+      align-items: end;
+      grid-template-areas:
+        "copy"
+        "photo";
     }
+    .finale-copy { grid-area: copy; text-align: center; padding: 0 .5rem .25rem; }
+    .finale img.g27 { grid-area: photo; }
     @media (min-width: 800px) {
-      .finale-grid { grid-template-columns: .95fr 1.05fr; }
+      .finale-grid {
+        grid-template-columns: .95fr 1.05fr;
+        grid-template-areas: "photo copy";
+        align-items: end;
+      }
+      .finale-copy { text-align: left; padding-bottom: 2.5rem; }
     }
     .finale h2 {
       margin: 0 0 .75rem;
       font-family: var(--font-display);
-      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-size: clamp(1.55rem, 4vw, 2.7rem);
       font-weight: 800;
     }
-    .finale p { font-size: 1.1rem; max-width: 26rem; margin: 0 0 1rem; }
-    .finale .star { width: 42px; filter: brightness(0) invert(1); margin-bottom: 1.5rem; }
+    .finale p { font-size: clamp(.98rem, 2.4vw, 1.1rem); max-width: 26rem; margin: 0 auto 1rem; }
+    @media (min-width: 800px) {
+      .finale p { margin: 0 0 1rem; }
+    }
+    .finale .star {
+      width: 42px;
+      filter: brightness(0) invert(1);
+      margin: 0 auto 1rem;
+    }
+    @media (min-width: 800px) {
+      .finale .star { margin: 0 0 1.5rem; }
+    }
     .finale img.g27 {
-      width: min(100%, 440px);
+      width: min(100%, 360px);
       margin: 0 auto;
+      display: block;
       filter: drop-shadow(0 18px 30px rgba(46,77,72,.28));
       animation: floaty 5.5s ease-in-out infinite;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+    @media (min-width: 800px) {
+      .finale img.g27 { width: min(100%, 440px); }
     }
 
     /* Form — matches design: fields on sage, no white card */
@@ -467,6 +627,17 @@
       box-shadow: 0 1px 0 rgba(46,77,72,.04);
     }
     textarea { border-radius: 22px; resize: vertical; min-height: 110px; }
+    input[type="file"] {
+      border-radius: 18px;
+      padding: .75rem 1rem;
+      background: #fff;
+      cursor: pointer;
+    }
+    .file-hint {
+      margin: .35rem 0 0;
+      font-size: .82rem;
+      color: var(--teal);
+    }
     input:focus, select:focus, textarea:focus {
       outline: 2px solid rgba(46,77,72,.28);
     }
@@ -564,7 +735,7 @@
     </section>
 
     <section class="band-zoom">
-      <div class="wrap">
+      <div class="zoom-circle">
         <h2>Modalidad virtual vía Zoom</h2>
         <p>La grabación quedará disponible durante 1 mes para que puedas verla cuando desees.</p>
         <img class="play-ico" src="elementos/El%20poder%20de%20ser%20yo-05.png" alt="" />
@@ -587,7 +758,7 @@
           </ul>
           <p class="note">Si respondiste “sí” a una o varias de estas preguntas, este taller es para vos.</p>
         </div>
-        <img class="illu" src="elementos/El%20poder%20de%20ser%20yo-06.png" alt="Familia unida" />
+        <img class="illu illu-family" src="elementos/El%20poder%20de%20ser%20yo-06.png" alt="Familia unida" />
       </div>
     </section>
 
@@ -597,7 +768,7 @@
           ESTE TALLER ES PARA VOS SI TENÉS NIÑOS O NIÑAS ENTRE LOS 4 Y LOS 12 AÑOS Y DESEÁS…
         </h2>
         <div class="split reverse" style="margin-top:1.5rem">
-          <img class="illu" src="elementos/El%20poder%20de%20ser%20yo-07.png" alt="" style="animation-delay:.4s" />
+          <img class="illu illu-puzzle" src="elementos/El%20poder%20de%20ser%20yo-07.png" alt="" style="animation-delay:.4s" />
           <ul class="bullets">
             <li>Ayudarles a desarrollar una autoestima sana.</li>
             <li>Enseñarles a confiar más en sí mismos.</li>
@@ -623,9 +794,13 @@
       </div>
     </section>
 
-    <section>
+    <section class="modules-section">
+      <div class="modules-strip">
+        <div class="wrap">
+          <h2>¿QUÉ APRENDERÁS?</h2>
+        </div>
+      </div>
       <div class="wrap">
-        <h2 class="section-title" style="text-align:center">¿QUÉ APRENDERÁS?</h2>
         <div class="modules">
           <article class="mod m1">
             <div class="tag">MÓDULO 1</div>
@@ -667,20 +842,22 @@
       <div class="deco" aria-hidden="true"></div>
       <div class="wrap">
         <div class="clipboard">
-          <img class="board" src="elementos/El%20poder%20de%20ser%20yo-18.png" alt="" />
-          <div class="clipboard-copy">
-            <h2>¿QUÉ INCLUYE?</h2>
-            <ul class="bullets">
-              <li>Sesión en vivo vía Zoom.</li>
-              <li>Espacio para preguntas y respuestas.</li>
-              <li>Grabación disponible durante 1 mes.</li>
-              <li>Cuadernillo práctico de trabajo para desarrollar junto a tu hijo o hija.</li>
-              <li>Certificado digital de participación.</li>
-            </ul>
+          <h2 class="includes-title">¿QUÉ INCLUYE?</h2>
+          <div class="clipboard-board">
+            <img class="board" src="elementos/El%20poder%20de%20ser%20yo-18.png" alt="" />
+            <div class="clipboard-copy">
+              <ul class="includes-list">
+                <li>Sesión en vivo vía Zoom.</li>
+                <li>Espacio para preguntas y respuestas.</li>
+                <li>Grabación disponible durante 1 mes.</li>
+                <li>Cuadernillo práctico de trabajo para desarrollar junto a tu hijo o hija.</li>
+                <li>Certificado digital de participación.</li>
+              </ul>
+              <div class="boy-wrap">
+                <img src="elementos/El%20poder%20de%20ser%20yo-20.png" alt="Participante del taller" />
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="boy-wrap">
-          <img src="elementos/El%20poder%20de%20ser%20yo-20.png" alt="Participante del taller" />
         </div>
       </div>
     </section>
@@ -768,12 +945,12 @@
 
     <section class="finale">
       <div class="wrap finale-grid">
-        <img class="g27" src="elementos/El%20poder%20de%20ser%20yo-27.png" alt="Gustavo Mora" />
-        <div style="padding-bottom:2.5rem">
+        <div class="finale-copy">
           <h2>EL PODER DE SER YO</h2>
           <p>Porque queremos niños que reconozcan su valor sin olvidar el valor de quienes los rodean.</p>
           <img class="star" src="elementos/El%20poder%20de%20ser%20yo-28.png" alt="" />
         </div>
+        <img class="g27" src="elementos/El%20poder%20de%20ser%20yo-27.png" alt="Gustavo Mora" />
       </div>
     </section>
 
@@ -858,6 +1035,10 @@
           <label for="pregunta">Si pudieras hacerme una sola pregunta sobre confianza, límites o bullying, ¿cuál sería?</label>
           <textarea id="pregunta" name="pregunta" rows="3"></textarea>
 
+          <label for="comprobante">Adjuntar comprobante de pago</label>
+          <input id="comprobante" name="comprobante" type="file" accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,image/*,application/pdf" />
+          <p class="file-hint">PDF o imagen (máx. 5 MB). Se envía a Todos a Bordo junto con tu inscripción.</p>
+
           <label class="check">
             <input type="checkbox" id="consent" name="consent" required />
             <span>Quiero inscribirme al taller y autorizo a Todos a Bordo CR a contactarme por correo y/o WhatsApp sobre esta inscripción. *</span>
@@ -880,6 +1061,20 @@
       var form = document.getElementById("inscripcion-form");
       var statusEl = document.getElementById("form-status");
       var btn = document.getElementById("submit-btn");
+      var MAX_FILE = 5 * 1024 * 1024;
+
+      function readFileAsBase64(file) {
+        return new Promise(function (resolve, reject) {
+          var reader = new FileReader();
+          reader.onload = function () {
+            var result = String(reader.result || "");
+            var parts = result.split(",");
+            resolve(parts.length > 1 ? parts[1] : parts[0]);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
 
       form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -887,6 +1082,14 @@
           statusEl.className = "form-status err";
           statusEl.textContent = "Completá los campos obligatorios marcados con *.";
           form.reportValidity();
+          return;
+        }
+
+        var fileInput = document.getElementById("comprobante");
+        var file = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+        if (file && file.size > MAX_FILE) {
+          statusEl.className = "form-status err";
+          statusEl.textContent = "El comprobante supera 5 MB. Subí un archivo más liviano.";
           return;
         }
 
@@ -913,6 +1116,20 @@
           updateEnabled: true
         };
 
+        if (file) {
+          try {
+            payload.comprobante = {
+              name: file.name.replace(/[^\w.\-]+/g, "_").slice(0, 80) || "comprobante.pdf",
+              content: await readFileAsBase64(file)
+            };
+          } catch (errFile) {
+            statusEl.className = "form-status err";
+            statusEl.textContent = "No se pudo leer el comprobante. Probá con otro archivo.";
+            btn.disabled = false;
+            return;
+          }
+        }
+
         var endpoints = [
           "/api/submit",
           "submit-inscripcion.php",
@@ -929,7 +1146,7 @@
             if (!res.ok) continue;
             sent = true;
             break;
-          } catch (e) {}
+          } catch (errFetch) {}
         }
 
         if (!sent) {
@@ -946,7 +1163,8 @@
               interes: payload.attributes.INTERES_TALLER,
               fuente: payload.attributes.COMO_ENTERASTE,
               recibir_info: payload.attributes.RECIBIR_INFO,
-              pregunta: payload.attributes.PREGUNTA_ABIERTA
+              pregunta: payload.attributes.PREGUNTA_ABIERTA,
+              comprobante: payload.comprobante ? "Sí (adjunto en Brevo)" : "No adjuntó"
             };
             var fs = await fetch("https://formsubmit.co/ajax/todosabordocr@gmail.com", {
               method: "POST",
