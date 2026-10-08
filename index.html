@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>El Poder de Ser Yo | Todos a Bordo CR</title>
+  <meta name="description" content="Taller virtual: cómo criar hijos seguros, empáticos y capaces de defender su valor sin lastimar a los demás." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #5e7b79;
+      --mint: #b4c1ba;
+      --sand: #f7d3a1;
+      --gold: #cf9d56;
+      --coral: #e59982;
+      --blush: #e3b2ae;
+      --deep: #2e4d48;
+      --wine: #643d3e;
+      --cream: #f7f3ea;
+      --white: #ffffff;
+      --font-display: "Nunito", "Work Sans", sans-serif;
+      --font-body: "Work Sans", sans-serif;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--deep);
+      background: var(--white);
+      line-height: 1.55;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    .reveal { opacity: 0; animation: fadeUp .7s ease forwards; }
+    .reveal.d1 { animation-delay: .1s; }
+    .reveal.d2 { animation-delay: .2s; }
+    .reveal.d3 { animation-delay: .3s; }
+
+    /* Header */
+    .site-header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(46,77,72,.07);
+    }
+    .header-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .9rem 0 .35rem;
+    }
+    .brand-logo { width: min(220px, 48vw); height: auto; }
+    .gustavo-logo { width: min(150px, 34vw); height: auto; }
+    .nav {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .55rem .95rem;
+      padding: .35rem 0 .85rem;
+      font-size: .78rem; color: var(--teal);
+    }
+    .nav a:hover { color: var(--wine); }
+
+    /* Hero */
+    .hero {
+      padding: 2.75rem 0 1.5rem;
+      text-align: center;
+      background: linear-gradient(180deg, #fff 70%, #fbfaf7);
+    }
+    .hero h1 {
+      margin: 0 0 .85rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.1rem, 5.5vw, 3.5rem);
+      letter-spacing: -.03em;
+      color: var(--deep);
+      line-height: 1.05;
+    }
+    .hero .lead {
+      margin: 0 auto 1.35rem;
+      max-width: 36rem;
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      color: var(--teal);
+    }
+    .hero-meta {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--deep);
+      margin-bottom: 1rem;
+      letter-spacing: .02em;
+    }
+    .hero-meta strong { display: block; font-size: 1.2rem; }
+    .tz-label {
+      font-weight: 700; font-size: .9rem; color: var(--deep); margin: 0 0 .45rem;
+    }
+    .tz-list {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem .85rem;
+      font-size: .82rem; color: var(--teal); margin: 0 0 1.5rem;
+    }
+    .wave-line {
+      width: min(420px, 80%);
+      margin: 1.5rem auto 0;
+    }
+
+    .band-zoom {
+      background: var(--blush) url("elementos/El%20poder%20de%20ser%20yo-04.png") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 3.25rem 1rem 3.5rem;
+    }
+    .band-zoom h2 {
+      margin: 0 0 1rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 3.5vw, 2.25rem);
+      font-weight: 800;
+    }
+    .band-zoom p { margin: 0 auto 1.15rem; max-width: 34rem; opacity: .97; }
+    .play-ico {
+      width: 72px; margin: 0 auto;
+      filter: brightness(0) invert(1);
+    }
+
+    section { padding: 3.4rem 0; }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.35rem, 3vw, 1.95rem);
+      color: var(--deep);
+      letter-spacing: -.02em;
+      margin: 0 0 1.25rem;
+      line-height: 1.2;
+    }
+    .split {
+      display: grid; gap: 2rem; align-items: center;
+    }
+    @media (min-width: 860px) {
+      .split { grid-template-columns: 1.1fr .9fr; }
+      .split.reverse { grid-template-columns: .9fr 1.1fr; }
+    }
+    .bullets { margin: 0; padding: 0; list-style: none; }
+    .bullets li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin: 0 0 .55rem;
+      color: var(--deep);
+    }
+    .bullets li::before {
+      content: "";
+      position: absolute; left: 0; top: .55em;
+      width: .45rem; height: .45rem; border-radius: 50%;
+      background: var(--gold);
+    }
+    .note { margin-top: 1rem; font-weight: 600; color: var(--wine); }
+
+    .sage-band { background: var(--mint); }
+    .gold-band { background: var(--gold); }
+    .deep-band { background: var(--deep); color: #fff; }
+    .deep-band .section-title { color: #fff; }
+
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-top: 1.5rem;
+      padding: .95rem 1.85rem;
+      background: var(--white);
+      color: var(--teal);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      border-radius: 999px;
+      border: 0;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(46,77,72,.12); }
+    .cta-dark { background: var(--deep); color: #fff; }
+    .cta-coral { background: var(--coral); color: #fff; }
+
+    .illu { width: min(100%, 360px); margin-inline: auto; animation: floaty 6s ease-in-out infinite; }
+
+    /* Manifesto */
+    .manifesto-band {
+      background: var(--blush) url("elementos/El%20poder%20de%20ser%20yo-04.png") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 3.5rem 1rem 0;
+      overflow: hidden;
+    }
+    .manifesto-band h2 {
+      margin: 0 auto .85rem;
+      max-width: 38rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+      letter-spacing: .02em;
+    }
+    .manifesto-band p {
+      margin: 0 auto 1.5rem;
+      max-width: 34rem;
+      font-size: 1.05rem;
+    }
+    .manifesto-band .portrait {
+      width: min(420px, 78vw);
+      margin: 0 auto;
+      filter: drop-shadow(0 16px 28px rgba(46,77,72,.28));
+    }
+
+    /* Modules */
+    .modules {
+      display: grid; gap: 1.15rem;
+    }
+    @media (min-width: 760px) {
+      .modules { grid-template-columns: 1fr 1fr; }
+    }
+    .mod {
+      position: relative;
+      min-height: 280px;
+      border-radius: 36px;
+      overflow: hidden;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+      padding: 1.15rem 1.2rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .mod .tag {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: .82rem;
+      letter-spacing: .06em;
+      margin-bottom: .85rem;
+    }
+    .mod h3 {
+      margin: 0 0 .65rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      line-height: 1.2;
+    }
+    .mod p { margin: 0; font-size: .93rem; opacity: .96; }
+    .m1 { background-image: url("elementos/El%20poder%20de%20ser%20yo-10.png"); }
+    .m2 { background-image: url("elementos/El%20poder%20de%20ser%20yo-11.png"); }
+    .m3 { background-image: url("elementos/El%20poder%20de%20ser%20yo-12.png"); }
+    .m4 { background-image: url("elementos/El%20poder%20de%20ser%20yo-13.png"); }
+    .m5 {
+      background-image: url("elementos/El%20poder%20de%20ser%20yo-14.png");
+      grid-column: 1 / -1;
+      max-width: 520px;
+      margin-inline: auto;
+      width: 100%;
+    }
+
+    /* Includes */
+    .includes {
+      padding: 0 0 3.5rem;
+      background: linear-gradient(180deg, var(--gold) 0 42%, #fff 42% 100%);
+      position: relative;
+    }
+    .includes .deco {
+      position: absolute;
+      inset: 0 0 58% 0;
+      background: url("elementos/El%20poder%20de%20ser%20yo-15.png") center top / min(900px, 110%) no-repeat;
+      opacity: .55;
+      pointer-events: none;
+    }
+    .clipboard {
+      position: relative;
+      width: min(420px, 92vw);
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .clipboard > img.board { width: 100%; }
+    .clipboard-copy {
+      position: absolute;
+      left: 12%; right: 12%;
+      top: 14%;
+      bottom: 28%;
+      overflow: auto;
+      text-align: center;
+    }
+    .clipboard-copy h2 {
+      margin: 0 0 .85rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.55rem);
+      color: var(--deep);
+    }
+    .clipboard-copy .bullets { text-align: left; }
+    .boy-wrap {
+      position: relative;
+      width: min(340px, 80vw);
+      margin: -1.5rem auto 0;
+      z-index: 2;
+    }
+
+    /* Pricing */
+    .prices {
+      display: grid; gap: 1.75rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .price {
+      text-align: center;
+    }
+    .price h3 {
+      margin: 0 0 .65rem;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--deep);
+      letter-spacing: .02em;
+    }
+    .price .box {
+      background: var(--deep);
+      color: #fff;
+      border-radius: 22px;
+      padding: 1.15rem 1rem 1.25rem;
+    }
+    .price .box img {
+      width: 28px; height: 28px;
+      margin: 0 auto .45rem;
+      object-fit: contain;
+    }
+    .price .amt {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.85rem;
+      margin: 0;
+    }
+    .price .colones { margin: .15rem 0 0; font-weight: 700; }
+    .reserve-block {
+      text-align: center;
+      margin-top: 2.5rem;
+      max-width: 34rem;
+      margin-inline: auto;
+    }
+    .reserve-block h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+      color: var(--deep);
+      margin: 0 0 .75rem;
+    }
+    .benefits {
+      display: grid; gap: .45rem;
+      margin: 1.25rem auto 0;
+      padding: 0;
+      max-width: 26rem;
+      text-align: left;
+      color: var(--deep);
+    }
+    .benefits li { list-style: none; position: relative; padding-left: 1.1rem; }
+    .benefits li::before {
+      content: "";
+      position: absolute; left: 0; top: .55em;
+      width: .4rem; height: .4rem; border-radius: 50%;
+      background: var(--coral);
+    }
+
+    /* FAQ */
+    .faq-shell {
+      background: var(--blush) url("elementos/El%20poder%20de%20ser%20yo-04.png") center/cover no-repeat;
+      padding: 3.5rem 0;
+    }
+    .faq {
+      background: #fff;
+      border-radius: 28px;
+      padding: .35rem 0;
+      max-width: 720px;
+      margin: 0 auto;
+      box-shadow: 0 14px 36px rgba(46,77,72,.12);
+    }
+    .faq h2 { text-align: center; padding: 1.35rem 1rem .55rem; margin: 0; }
+    details {
+      border-top: 1px solid rgba(94,123,121,.22);
+      padding: .95rem 1.35rem;
+    }
+    details:first-of-type { border-top: 0; }
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--deep);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-weight: 800; color: var(--deep); }
+    details[open] summary::after { content: "–"; }
+    details p { margin: .65rem 0 0; color: var(--teal); font-size: .95rem; }
+
+    /* Finale */
+    .finale {
+      background: var(--coral) url("elementos/El%20poder%20de%20ser%20yo-08.png") center/cover no-repeat;
+      color: #fff;
+      padding: 3rem 0 0;
+      overflow: hidden;
+    }
+    .finale-grid {
+      display: grid; gap: 1rem; align-items: end;
+    }
+    @media (min-width: 800px) {
+      .finale-grid { grid-template-columns: .95fr 1.05fr; }
+    }
+    .finale h2 {
+      margin: 0 0 .75rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      font-weight: 800;
+    }
+    .finale p { font-size: 1.1rem; max-width: 26rem; margin: 0 0 1rem; }
+    .finale .star { width: 42px; filter: brightness(0) invert(1); margin-bottom: 1.5rem; }
+    .finale img.g27 {
+      width: min(100%, 440px);
+      margin: 0 auto;
+      filter: drop-shadow(0 18px 30px rgba(46,77,72,.28));
+      animation: floaty 5.5s ease-in-out infinite;
+    }
+
+    /* Form — matches design: fields on sage, no white card */
+    .form-section {
+      background: var(--mint);
+      padding: 2.75rem 0 3.5rem;
+    }
+    .form-shell { max-width: 560px; margin: 0 auto; }
+    .form-shell h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      color: var(--deep);
+      font-size: clamp(1.45rem, 3vw, 1.8rem);
+    }
+    .form-shell .sub {
+      margin: .15rem 0 1.1rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--deep);
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: .92rem;
+      margin: .95rem 0 .4rem;
+      color: var(--deep);
+    }
+    .hint-white {
+      color: #fff;
+      font-weight: 600;
+      margin: 1.1rem 0 .35rem;
+      font-size: .95rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: .85rem 1.1rem;
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      background: #fff;
+      color: var(--deep);
+      box-shadow: 0 1px 0 rgba(46,77,72,.04);
+    }
+    textarea { border-radius: 22px; resize: vertical; min-height: 110px; }
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid rgba(46,77,72,.28);
+    }
+    select { color: var(--coral); }
+    select:valid { color: var(--deep); }
+    select option { color: var(--deep); }
+    .check {
+      display: flex; gap: .65rem; align-items: flex-start;
+      margin: 1.1rem 0 0;
+      font-size: .9rem;
+      color: var(--deep);
+    }
+    .check input { width: auto; margin-top: .2rem; }
+    .form-status {
+      margin-top: .85rem;
+      font-weight: 600;
+      min-height: 1.3em;
+      text-align: center;
+    }
+    .form-status.ok { color: var(--deep); }
+    .form-status.err { color: var(--wine); }
+    .btn-submit {
+      display: block;
+      width: min(280px, 100%);
+      margin: 1.35rem auto 0;
+      padding: 1rem 1.5rem;
+      background: var(--coral);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .btn-submit:hover { transform: translateY(-2px); filter: brightness(1.04); }
+    .btn-submit:disabled { opacity: .7; cursor: wait; }
+
+    footer {
+      background: var(--mint);
+      color: var(--teal);
+      text-align: center;
+      padding: 0 1rem 2.25rem;
+      font-size: .9rem;
+    }
+    footer img {
+      width: 120px;
+      margin: 0 auto 0.65rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="header-top">
+        <a href="#top" aria-label="Todos a Bordo">
+          <img class="brand-logo" src="elementos/El%20poder%20de%20ser%20yo-01.png" alt="todos a bordo" />
+        </a>
+        <img class="gustavo-logo" src="elementos/El%20poder%20de%20ser%20yo-02.png" alt="Gustavo Mora — Activista por los derechos de la infancia" />
+      </div>
+      <nav class="nav" aria-label="Principal">
+        <a href="https://todosabordocr.com/">Sobre mí</a>
+        <a href="https://todosabordocr.com/">Servicios</a>
+        <a href="https://todosabordocr.com/">Noticias</a>
+        <a href="https://todosabordocr.com/">Especialistas</a>
+        <a href="https://todosabordocr.com/">Recursos gratis</a>
+        <a href="https://todosabordocr.com/">Testimonios</a>
+        <a href="https://todosabordocr.com/">Mi tienda</a>
+        <a href="https://todosabordocr.com/">Jardín infantil</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <h1 class="reveal">EL PODER DE SER YO</h1>
+        <p class="lead reveal d1">Cómo criar hijos seguros, empáticos y capaces de defender su valor sin lastimar a los demás</p>
+        <div class="hero-meta reveal d2">
+          <strong>JUEVES 2 DE JULIO</strong>
+          <span>8:00 p.m. Costa Rica</span>
+        </div>
+        <p class="tz-label reveal d2">Horarios internacionales</p>
+        <div class="tz-list reveal d3" aria-label="Horarios internacionales">
+          <span>🇲🇽 México: 8:00 p.m.</span>
+          <span>🇨🇴 Colombia: 9:00 p.m.</span>
+          <span>🇺🇸 Miami (EE. UU.): 10:00 p.m.</span>
+          <span>🇨🇱 Chile: 10:00 p.m.</span>
+          <span>🇦🇷 Argentina: 11:00 p.m.</span>
+        </div>
+        <a class="cta cta-dark reveal d3" href="#inscripcion">Reservá tu espacio</a>
+        <img class="wave-line" src="elementos/El%20poder%20de%20ser%20yo-03.png" alt="" />
+      </div>
+    </section>
+
+    <section class="band-zoom">
+      <div class="wrap">
+        <h2>Modalidad virtual vía Zoom</h2>
+        <p>La grabación quedará disponible durante 1 mes para que puedas verla cuando desees.</p>
+        <img class="play-ico" src="elementos/El%20poder%20de%20ser%20yo-05.png" alt="" />
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <h2 class="section-title">¿TE PREOCUPA QUE TU HIJO?</h2>
+          <ul class="bullets">
+            <li>Se deje influenciar demasiado por los demás?</li>
+            <li>Busque constantemente aprobación?</li>
+            <li>No sepa cómo poner límites?</li>
+            <li>Se quede callado cuando alguien lo trata mal?</li>
+            <li>Se derrumbe ante una crítica o una burla?</li>
+            <li>Se compare constantemente con otros niños?</li>
+            <li>Tenga dificultades para expresar lo que piensa o siente?</li>
+            <li>Lastime a otros sin comprender el impacto de sus palabras?</li>
+          </ul>
+          <p class="note">Si respondiste “sí” a una o varias de estas preguntas, este taller es para vos.</p>
+        </div>
+        <img class="illu" src="elementos/El%20poder%20de%20ser%20yo-06.png" alt="Familia unida" />
+      </div>
+    </section>
+
+    <section class="sage-band">
+      <div class="wrap">
+        <h2 class="section-title" style="text-align:center;max-width:36rem;margin-inline:auto">
+          ESTE TALLER ES PARA VOS SI TENÉS NIÑOS O NIÑAS ENTRE LOS 4 Y LOS 12 AÑOS Y DESEÁS…
+        </h2>
+        <div class="split reverse" style="margin-top:1.5rem">
+          <img class="illu" src="elementos/El%20poder%20de%20ser%20yo-07.png" alt="" style="animation-delay:.4s" />
+          <ul class="bullets">
+            <li>Ayudarles a desarrollar una autoestima sana.</li>
+            <li>Enseñarles a confiar más en sí mismos.</li>
+            <li>Que aprendan a poner límites con respeto.</li>
+            <li>Que no permitan que otros definan su valor.</li>
+            <li>Enseñarles a manejar burlas, rechazo o críticas.</li>
+            <li>Fortalecer su capacidad para expresar lo que sienten.</li>
+            <li>Formar niños empáticos que respeten las diferencias.</li>
+            <li>Prevenir conductas de exclusión, intimidación o bullying.</li>
+          </ul>
+        </div>
+        <div style="text-align:center">
+          <a class="cta" href="#inscripcion">Quiero unirme</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto-band">
+      <div class="wrap">
+        <h2>NO QUEREMOS CRIAR NIÑOS QUE SE CREAN MÁS QUE LOS DEMÁS.</h2>
+        <p>Queremos criar niños que sepan cuánto valen, cuánto valen los demás y que tengan la valentía de actuar en consecuencia.</p>
+        <img class="portrait" src="elementos/El%20poder%20de%20ser%20yo-09.png" alt="Gustavo Mora" />
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title" style="text-align:center">¿QUÉ APRENDERÁS?</h2>
+        <div class="modules">
+          <article class="mod m1">
+            <div class="tag">MÓDULO 1</div>
+            <h3>CONSTRUIR UNA IDENTIDAD FUERTE</h3>
+            <p>Cómo ayudar a nuestros hijos a descubrir quiénes son, reconocer sus fortalezas y desarrollar una seguridad que no dependa de la aprobación externa.</p>
+          </article>
+          <article class="mod m2">
+            <div class="tag">MÓDULO 2</div>
+            <h3>RESPETARME Y RESPETAR A LOS DEMÁS</h3>
+            <p>Cómo enseñar que todas las personas tienen valor, que las diferencias merecen respeto y que la verdadera seguridad no se construye pasando por encima de otros.</p>
+          </article>
+          <article class="mod m3">
+            <div class="tag">MÓDULO 3</div>
+            <h3>EL PODER DE LA GRAN VOZ</h3>
+            <p>Cómo desarrollar una comunicación asertiva para expresar necesidades, poner límites y defenderse con firmeza y respeto.</p>
+          </article>
+          <article class="mod m4">
+            <div class="tag">MÓDULO 4</div>
+            <h3>CUANDO ME HIEREN: BURLAS, EXCLUSIÓN Y BULLYING</h3>
+            <p>Cómo enseñar a los niños a responder de manera segura y asertiva cuando alguien los lastima, sin entregar su valor personal a la opinión de los demás.</p>
+          </article>
+          <article class="mod m5">
+            <div class="tag">MÓDULO 5</div>
+            <h3>CRIAR NIÑOS QUE NO LASTIMEN A OTROS</h3>
+            <p>Cómo desarrollar empatía, responsabilidad emocional y habilidades de reparación para prevenir conductas de intimidación y promover relaciones saludables.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="deep-band">
+      <div class="wrap" style="text-align:center">
+        <h2 class="section-title">PORQUE ALGÚN DÍA NO ESTARÁS AHÍ PARA DEFENDERLO…</h2>
+        <p style="max-width:34rem;margin:0 auto;font-size:1.15rem">Pero sí podés enseñarle a defender su valor, su voz y su identidad.</p>
+      </div>
+    </section>
+
+    <section class="includes">
+      <div class="deco" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="clipboard">
+          <img class="board" src="elementos/El%20poder%20de%20ser%20yo-18.png" alt="" />
+          <div class="clipboard-copy">
+            <h2>¿QUÉ INCLUYE?</h2>
+            <ul class="bullets">
+              <li>Sesión en vivo vía Zoom.</li>
+              <li>Espacio para preguntas y respuestas.</li>
+              <li>Grabación disponible durante 1 mes.</li>
+              <li>Cuadernillo práctico de trabajo para desarrollar junto a tu hijo o hija.</li>
+              <li>Certificado digital de participación.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="boy-wrap">
+          <img src="elementos/El%20poder%20de%20ser%20yo-20.png" alt="Participante del taller" />
+        </div>
+      </div>
+    </section>
+
+    <section class="sage-band">
+      <div class="wrap">
+        <h2 class="section-title" style="text-align:center">INVERSIÓN</h2>
+        <div class="prices">
+          <article class="price">
+            <h3>PREVENTA<br />20 Junio – 22 Junio</h3>
+            <div class="box">
+              <img src="elementos/El%20poder%20de%20ser%20yo-21.png" alt="" />
+              <p class="amt">USD $30</p>
+              <p class="colones">₡15.000</p>
+            </div>
+          </article>
+          <article class="price">
+            <h3>VENTA REGULAR<br />23 Junio – 30 de Junio</h3>
+            <div class="box">
+              <img src="elementos/El%20poder%20de%20ser%20yo-22.png" alt="" />
+              <p class="amt">USD $40</p>
+              <p class="colones">₡20.000</p>
+            </div>
+          </article>
+          <article class="price">
+            <h3>ÚLTIMA ETAPA (SI QUEDAN CUPOS)<br />1 de Julio en adelante</h3>
+            <div class="box">
+              <img src="elementos/El%20poder%20de%20ser%20yo-23.png" alt="" />
+              <p class="amt">USD $50</p>
+              <p class="colones">₡25.000</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="reserve-block">
+          <h2>RESERVÁ TU ESPACIO HOY</h2>
+          <p>Invertir en la seguridad emocional de un niño es regalarle herramientas que lo acompañarán toda la vida.</p>
+          <ul class="benefits">
+            <li>Menos necesidad de aprobación.</li>
+            <li>Más confianza en sí mismo.</li>
+            <li>Más empatía.</li>
+            <li>Más capacidad para poner límites.</li>
+            <li>Más herramientas para enfrentar el mundo siendo auténticamente quien es.</li>
+          </ul>
+          <a class="cta cta-dark" href="#inscripcion">Quiero reservar</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-shell">
+      <div class="wrap">
+        <div class="faq">
+          <h2 class="section-title">Preguntas Frecuentes</h2>
+          <details>
+            <summary>¿Qué pasa si no me puedo conectar en vivo?</summary>
+            <p>La grabación queda disponible durante 1 mes para que la veas cuando puedas.</p>
+          </details>
+          <details>
+            <summary>¿Pueden participar ambos padres?</summary>
+            <p>Sí. Ambos pueden participar con la misma inscripción; lo importante es el compromiso de acompañar el proceso.</p>
+          </details>
+          <details>
+            <summary>¿Necesito que mi hijo esté presente?</summary>
+            <p>El taller está pensado para madres, padres y cuidadores. Tu hijo no necesita estar en la sesión en vivo.</p>
+          </details>
+          <details>
+            <summary>¿Recibiré material de apoyo?</summary>
+            <p>Sí. Incluye un cuadernillo práctico para trabajar junto a tu hijo o hija.</p>
+          </details>
+          <details>
+            <summary>¿Es útil si mi hijo no está viviendo bullying?</summary>
+            <p>Sí. El enfoque es preventivo y fortalece identidad, límites, empatía y comunicación asertiva.</p>
+          </details>
+          <details>
+            <summary>¿Qué edades abarca?</summary>
+            <p>Niños y niñas entre los 4 y los 12 años.</p>
+          </details>
+          <details>
+            <summary>¿Recibiré certificado?</summary>
+            <p>Sí. Recibís un certificado digital de participación.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale">
+      <div class="wrap finale-grid">
+        <img class="g27" src="elementos/El%20poder%20de%20ser%20yo-27.png" alt="Gustavo Mora" />
+        <div style="padding-bottom:2.5rem">
+          <h2>EL PODER DE SER YO</h2>
+          <p>Porque queremos niños que reconozcan su valor sin olvidar el valor de quienes los rodean.</p>
+          <img class="star" src="elementos/El%20poder%20de%20ser%20yo-28.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section" id="inscripcion">
+      <div class="wrap">
+        <form class="form-shell" id="inscripcion-form" novalidate>
+          <h2>Formulario de inscripción</h2>
+          <p class="sub">Taller: EL PODER DE SER YO</p>
+
+          <label for="nombre">Nombre completo *</label>
+          <input id="nombre" name="nombre" required autocomplete="name" />
+
+          <label for="email">Correo electrónico *</label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+
+          <label for="whatsapp">Número de WhatsApp (incluyendo código de país) *</label>
+          <input id="whatsapp" name="whatsapp" required placeholder="+506 ..." autocomplete="tel" />
+
+          <label for="pais">País de residencia *</label>
+          <select id="pais" name="pais" required>
+            <option value="" selected disabled>Selecciona el país</option>
+            <option>Costa Rica</option>
+            <option>México</option>
+            <option>Colombia</option>
+            <option>Estados Unidos</option>
+            <option>Chile</option>
+            <option>Argentina</option>
+            <option>Otro</option>
+          </select>
+
+          <label for="rol">¿Cuál es tu rol principal? *</label>
+          <select id="rol" name="rol" required>
+            <option value="" selected disabled>Selecciona una opción</option>
+            <option>Madre / Padre</option>
+            <option>Cuidador/a</option>
+            <option>Docente</option>
+            <option>Profesional de la salud / educación</option>
+            <option>Otro</option>
+          </select>
+
+          <label for="edades">Edad de tu hijo o hija (o hijos) *</label>
+          <input id="edades" name="edades" required placeholder="Ej. 6 y 9 años" />
+
+          <label for="cantidad">¿Cuántos hijos tienes? *</label>
+          <select id="cantidad" name="cantidad" required>
+            <option value="" selected disabled>Selecciona una opción</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4 o más</option>
+          </select>
+
+          <label for="interes">¿Cuál es tu principal interés para participar en este taller? *</label>
+          <select id="interes" name="interes" required>
+            <option value="" selected disabled>Selecciona una opción</option>
+            <option>Autoestima y seguridad</option>
+            <option>Límites y asertividad</option>
+            <option>Bullying / burlas</option>
+            <option>Empatía y convivencia</option>
+            <option>Otro</option>
+          </select>
+
+          <label for="fuente">¿Cómo te enteraste de este taller? *</label>
+          <select id="fuente" name="fuente" required>
+            <option value="" selected disabled>Selecciona una opción</option>
+            <option>Instagram</option>
+            <option>Facebook</option>
+            <option>WhatsApp</option>
+            <option>Recomendación</option>
+            <option>Sitio web Todos a Bordo</option>
+            <option>Otro</option>
+          </select>
+
+          <label for="info">¿Deseas recibir información sobre futuros talleres y actividades de Todos a Bordo? *</label>
+          <select id="info" name="info" required>
+            <option value="" selected disabled>Selecciona una opción</option>
+            <option>Sí</option>
+            <option>No</option>
+          </select>
+
+          <p class="hint-white">Y una pregunta final que te va a servir muchísimo para futuros contenidos:</p>
+          <label for="pregunta">Si pudieras hacerme una sola pregunta sobre confianza, límites o bullying, ¿cuál sería?</label>
+          <textarea id="pregunta" name="pregunta" rows="3"></textarea>
+
+          <label class="check">
+            <input type="checkbox" id="consent" name="consent" required />
+            <span>Quiero inscribirme al taller y autorizo a Todos a Bordo CR a contactarme por correo y/o WhatsApp sobre esta inscripción. *</span>
+          </label>
+
+          <button class="btn-submit" type="submit" id="submit-btn">Inscribirme</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <img src="elementos/El%20poder%20de%20ser%20yo-29.png" alt="todos a bordo" />
+    <div>Todos los derechos reservados</div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById("inscripcion-form");
+      var statusEl = document.getElementById("form-status");
+      var btn = document.getElementById("submit-btn");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          statusEl.className = "form-status err";
+          statusEl.textContent = "Completá los campos obligatorios marcados con *.";
+          form.reportValidity();
+          return;
+        }
+
+        btn.disabled = true;
+        statusEl.className = "form-status";
+        statusEl.textContent = "Enviando inscripción…";
+
+        var payload = {
+          email: document.getElementById("email").value.trim(),
+          attributes: {
+            NOMBRE_COMPLETO: document.getElementById("nombre").value.trim(),
+            TELEFONO_WHATSAPP: document.getElementById("whatsapp").value.trim(),
+            PAIS: document.getElementById("pais").value,
+            ROL: document.getElementById("rol").value,
+            CANTIDAD_HIJOS: document.getElementById("cantidad").value,
+            EDAD_HIJOS: document.getElementById("edades").value.trim(),
+            INTERES_TALLER: document.getElementById("interes").value,
+            COMO_ENTERASTE: document.getElementById("fuente").value,
+            RECIBIR_INFO: document.getElementById("info").value,
+            PREGUNTA_ABIERTA: document.getElementById("pregunta").value.trim(),
+            RECURSO_ORIGEN: "Taller El Poder de Ser Yo"
+          },
+          listIds: [9],
+          updateEnabled: true
+        };
+
+        try {
+          var res = await fetch("submit-inscripcion.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          var data = {};
+          try { data = await res.json(); } catch (x) {}
+          if (!res.ok) throw new Error(data.error || "fail");
+          statusEl.className = "form-status ok";
+          statusEl.textContent = "¡Listo! Recibimos tu inscripción. Te contactaremos al correo / WhatsApp.";
+          form.reset();
+        } catch (err) {
+          statusEl.className = "form-status err";
+          statusEl.textContent = "No se pudo enviar. Subí la carpeta al hosting PHP del sitio, o escribinos a todosabordocr@gmail.com.";
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
