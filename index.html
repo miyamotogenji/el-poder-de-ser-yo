@@ -913,7 +913,11 @@
           updateEnabled: true
         };
 
-        var endpoints = ["/api/submit", "submit-inscripcion.php"];
+        var endpoints = [
+          "/api/submit",
+          "submit-inscripcion.php",
+          "https://temporary-snappy-sycamore-y2t28gh.vercel.app/api/submit"
+        ];
         var sent = false;
         for (var i = 0; i < endpoints.length; i++) {
           try {
